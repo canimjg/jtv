@@ -1,6 +1,6 @@
 # JTV
 
-JTV is a Jellyfin-style media server for **Movies**, **TV Shows**, and **Live TV**. Each user account has its own provider credentials. The web UI includes posters, search, favorites, continue watching, and a TiviMate-style live TV guide.
+JTV is a Jellyfin-style media server for **Movies**, **TV Shows**, and **Live TV**. **Each JTV account has its own Xtream Codes login.** Do not share one Xtream user across several JTV accounts — that causes **404** and **permission denied** on streams. The web UI includes posters, search, favorites, continue watching, and a TiviMate-style live TV guide.
 
 The **JTV player app will be on Google Play soon.** This repository describes the product. It does not include the player application.
 
@@ -12,7 +12,7 @@ The **JTV player app will be on Google Play soon.** This repository describes th
 - **Live TV** — channels plus an EPG-style **Guide**
 - **Search** — movies, series, and live channels
 - **Favorites** — star titles and live channels
-- **Dashboard** — admins manage users and assign per-account credentials
+- **Dashboard** — admins manage users and assign a **separate Xtream Codes login to each account** (required to avoid 404 / permission denied)
 - **Playback** — remux when the client can handle it, HLS transcode as fallback
 
 JTV is a player-and-server for a **server you run**. It does not include Netflix, Disney+, or any other streaming subscription.
@@ -47,7 +47,15 @@ chmod +x install-ubuntu.sh
 ./install-ubuntu.sh
 ```
 
-If the firewall is on: `sudo ufw allow 18096/tcp`. Library data lives in a Docker volume. Open `http://YOUR_SERVER:18096`, sign in, and assign credentials to each user in the Dashboard.
+If the firewall is on: `sudo ufw allow 18096/tcp`. Library data lives in a Docker volume. Open `http://YOUR_SERVER:18096`, sign in, and in the Dashboard give **each user a separate Xtream Codes username and password**. Sharing one Xtream account between JTV users leads to **404** and **permission denied** errors.
+
+## Xtream Codes (one login per JTV user)
+
+JTV talks to your provider with the Xtream credentials stored on **that** JTV account.
+
+- Assign a **unique** Xtream user to every JTV user in the Dashboard.
+- Two people signed into JTV at once with the **same** Xtream code will hit connection limits and get **404** or **permission denied**.
+- Playback, Live TV, and the guide all use that per-account Xtream login, so a missing or shared code shows up as those errors rather than a JTV bug.
 
 ## Player
 
