@@ -22,7 +22,7 @@ JTV is a player-and-server for a **server you run**. It does not include Netflix
 ```
 Your Ubuntu box (JTV server, port 18096)
         │
-        ├── browser:  http://SERVER_LAN_IP:18096
+        ├── browser:  http://YOUR_SERVER:18096
         └── player:   coming to Google Play soon
                       (enter the same server address, then sign in)
 ```
@@ -47,7 +47,7 @@ chmod +x install-ubuntu.sh
 ./install-ubuntu.sh
 ```
 
-If the firewall is on: `sudo ufw allow 18096/tcp`. Library data lives in a Docker volume. Open `http://UBUNTU_LAN_IP:18096`, sign in, and assign credentials to each user in the Dashboard.
+If the firewall is on: `sudo ufw allow 18096/tcp`. Library data lives in a Docker volume. Open `http://YOUR_SERVER:18096`, sign in, and assign credentials to each user in the Dashboard.
 
 ## Player
 
@@ -56,7 +56,7 @@ The JTV player app **will be available on Google Play soon**.
 When it ships, you will:
 
 1. Install JTV from Google Play
-2. Enter `http://YOUR_SERVER_LAN_IP:18096` (not `localhost`)
+2. Enter `http://YOUR_SERVER:18096` (not `localhost`)
 3. Sign in with the username and password from your JTV server
 
 The player is meant for phones, tablets, and Android TV / Google TV. Keep the device on the same network as the server unless you expose JTV yourself.
