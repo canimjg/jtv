@@ -12,8 +12,22 @@ The **JTV player app will be on Google Play soon.** This repository describes th
 - **Live TV** — channels plus an EPG-style **Guide**
 - **Search** — movies, series, and live channels
 - **Favorites** — star titles and live channels
-- **Dashboard** — admins manage users and assign a **separate Xtream Codes login to each account** (required to avoid 404 / permission denied)
-- **Playback** — remux when the client can handle it, HLS transcode as fallback
+- **Dashboard** — admins manage users, assign a **separate Xtream Codes login to each account** (required to avoid 404 / permission denied), watch host CPU/memory, and download the Android / Android TV / Xbox apps from buttons at the bottom of the page
+- **Playback** — remux when the client can handle it, HLS transcode as fallback (GPU NVENC when available)
+
+## Screenshots
+
+Home, with library shortcuts and favorites:
+
+![JTV Home](screenshots/home.png)
+
+Movies, with categories and poster rows:
+
+![JTV Movies](screenshots/movies.jpg)
+
+Admin dashboard, with accounts, Xtream assignment, and app download buttons:
+
+![JTV Dashboard](screenshots/dashboard.png)
 
 JTV is a player-and-server for a **server you run**. It does not include Netflix, Disney+, or any other streaming subscription.
 
@@ -67,7 +81,9 @@ When it ships, you will:
 2. Enter `http://YOUR_SERVER:18096` (not `localhost`)
 3. Sign in with the username and password from your JTV server
 
-The player is meant for phones, tablets, and Android TV / Google TV. Keep the device on the same network as the server unless you expose JTV yourself.
+Until then, the admin Dashboard has **Android**, **Android TV**, and **Xbox** download buttons at the bottom of the page. Xbox sideloads the Android TV build in Developer Mode.
+
+Keep the device on the same network as the server unless you expose JTV yourself.
 
 ## Privacy
 
