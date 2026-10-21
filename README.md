@@ -37,8 +37,8 @@ JTV is a player-and-server for a **server you run**. It does not include Netflix
 Your Ubuntu box (JTV server, port 18096)
         │
         ├── browser:  http://YOUR_SERVER:18096
-        └── player:   coming to Google Play soon
-                      (enter the same server address, then sign in)
+        └── player:   Android / TV / Xbox (Google Play soon)
+                      connect to the same server, then sign in
 ```
 
 The player is a remote client, like Jellyfin’s apps. It asks for the server address, you sign in, then you browse and play. It does **not** host JTV on the phone or TV.
@@ -71,17 +71,22 @@ JTV talks to your provider with the Xtream credentials stored on **that** JTV ac
 - Two people signed into JTV at once with the **same** Xtream code will hit connection limits and get **404** or **permission denied**.
 - Playback, Live TV, and the guide all use that per-account Xtream login, so a missing or shared code shows up as those errors rather than a JTV bug.
 
-## Player
+## Player (version 2.0)
 
-The JTV player app **will be available on Google Play soon**.
+The JTV player is a remote client. It does **not** host the library. One APK covers phones, tablets, Android TV / Google TV / Fire TV, and Xbox (Developer Mode sideload).
 
-When it ships, you will:
+**Latest player behavior**
 
-1. Install JTV from Google Play
-2. Enter `http://YOUR_SERVER:18096` (not `localhost`)
-3. Sign in with the username and password from your JTV server
+- Connect first: enter `http://YOUR_SERVER:18096` (no example IP). `localhost` is rejected because that is the phone, TV, or Xbox.
+- Then sign in with your JTV username and password. **Remember me** keeps the session. **Change server** returns to Connect.
+- Browse **Home**, **Movies**, **TV Shows**, **Live TV**, **Guide**, and **Search** — the same libraries as the web app.
+- Favorites, continue watching, and a TiviMate-style live guide.
+- Playback uses ExoPlayer (Media3): remux when the device can handle it, HLS transcode as fallback.
+- Touch on phones; D-pad / Leanback on TV; gamepad on Xbox.
 
-Until then, the admin Dashboard has **Android**, **Android TV**, and **Xbox** download buttons at the bottom of the page. Xbox sideloads the Android TV build in Developer Mode.
+The player app **will be available on Google Play soon.** This repository still does not include the player source.
+
+Until then, the admin Dashboard has **Android**, **Android TV**, and **Xbox** download buttons at the bottom of the page. Xbox sideloads the Android TV APK in Developer Mode.
 
 Keep the device on the same network as the server unless you expose JTV yourself.
 
@@ -92,4 +97,4 @@ See [PRIVACY.md](PRIVACY.md). JTV is self-hosted. The upcoming Play Store player
 ## Status
 
 - Server and web UI: in use on Ubuntu (Docker)
-- Player app: **coming to Google Play soon** (not included in this repository)
+- Player app **2.0**: Android / Android TV / Xbox sideload from Dashboard downloads; **coming to Google Play soon** (source not in this repository)
